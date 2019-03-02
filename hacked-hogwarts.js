@@ -12,6 +12,7 @@ let filterBy = "All";
 let sortBy = "None";
 
 // --- Declare Umbridge ---
+let bloodFamilyJSON;
 
 // --- Declare new Student ---
 
@@ -27,6 +28,8 @@ const studentProto = {
   crest: "--Crest--",
   image: "--Image-",
   expelled: "--Expelled--",
+
+  bloodstatus: "--blood--",
 
   setJSONdata(studentData) {
     // Spacing in names
@@ -96,11 +99,45 @@ async function getJson() {
   studentObject(students);
 }
 
+// --- Fetch JSON Blood Status Datas ---
+function fetchBloodFamilyJSON(student) {
+  fetch("http://petlatkea.dk/2019/hogwarts/families.json")
+    .then(res => res.json())
+    .then(famJSON => {
+      bloodFamilyJSON = famJSON;
+      insertBloodStatus(student);
+    });
+}
+
+// --- Insert Blood Status to the Student Object Prototype
+function insertBloodStatus(student) {
+  let halfBlood = findHalfBlood(student.lastName);
+  let pureBlood = findPureBlood(student.lastName);
+  if (halfBlood) {
+    student.bloodstatus = "Half";
+  } else if (pureBlood) {
+    student.bloodstatus = "Pure";
+  } else {
+    student.bloodstatus = "Muggle";
+  }
+}
+
+// --- Find JSON Family Datas ---
+function findHalfBlood(studentLast) {
+  return bloodFamilyJSON.half.findIndex(obj => obj == studentLast) > -1;
+}
+function findPureBlood(studentLast) {
+  return bloodFamilyJSON.pure.findIndex(obj => obj == studentLast) > -1;
+}
+
 // --- Create Objects for each Student ---
 function studentObject(students) {
   students.forEach(studentData => {
     // Object
     const student = Object.create(studentProto);
+
+    fetchBloodFamilyJSON(student);
+
     student.setJSONdata(studentData);
     // Push in array
     arrayOfStudents.push(student);
@@ -285,9 +322,18 @@ function displayModal(student) {
   modal.querySelector("[data-lastname]").textContent = student.lastName;
   modal.querySelector("[data-house]").textContent = student.house;
   modal.querySelector("[data-crest]").src = student.crest;
-  modal.querySelector(".portrait").src = student.image;
-  modal.querySelector(".portrait").style.width = "100px";
+
+  let studentPortrait = modal.querySelector(".portrait");
+  if (student.firstName == "Padma") {
+    studentPortrait.src = "images/patil_padme.png";
+  } else {
+    studentPortrait.src = student.image;
+  }
+
   modal.querySelector(".close").addEventListener("click", closeModal);
+  modal.querySelector(".blood-status").textContent = `Blood Status: ${
+    student.bloodstatus
+  }`;
 
   if (student.house === "Hufflepuff") {
     modal.querySelector("#modal-content").classList.add("hufflepuff");
