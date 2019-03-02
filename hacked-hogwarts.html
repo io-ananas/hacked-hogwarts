@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="hacked-hogwarts.css" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <title>HACKED HOGWARTS</title>
+  </head>
+
+  <body>
+    <div class="backgroundimg"></div>
+
+    <div class="container">
+      <div class="title">HOGWARTS STUDENT LIST 1991</div>
+
+      <!------NAV------>
+      <nav id="navbar">
+        <!--Filter-->
+        <div class="nav-wrap">
+          <span class="text">Filter</span>
+          <ul>
+            <li id="all">All</li>
+            <li id="gryffindor">Gryffindor</li>
+            <li id="ravenclaw">Ravenclaw</li>
+            <li id="hufflepuff">Hufflepuff</li>
+            <li id="slytherin">Slytherin</li>
+          </ul>
+        </div>
+
+        <!--Expel-->
+        <div class="nav-wrap">
+          <span class="text">Status</span>
+          <ul>
+            <li id="expelled">Expelliarmus Spell</li>
+          </ul>
+        </div>
+
+        <!--Sort-->
+        <div class="nav-wrap">
+          <span class="text">Sort</span>
+          <ul>
+            <li id="firstname">First Name</li>
+            <li id="lastname">Last Name</li>
+            <li id="house">House</li>
+          </ul>
+        </div>
+
+        <!--Details-->
+        <div class="nav-wrap" class="details">
+          <div class="count">
+            <div id="studentCount"></div>
+            <div id="hufflepuffCount"></div>
+            <div id="gryffindorCount"></div>
+            <div id="ravenclawCount"></div>
+            <div id="slytherinCount"></div>
+            <div id="expelledCount"></div>
+          </div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="container" data-container></div>
+      </div>
+    </div>
+
+    <!-------MODAL------>
+    <div id="modal">
+      <div id="modal-content">
+        <img class="portrait" src="" alt="Student image" />
+        <div class="student_name_modal">
+          <h2>
+            <span data-firstname></span><span data-middlename></span
+            ><span data-lastname></span>
+          </h2>
+          <p class="house" data-house></p>
+        </div>
+        <img src="" alt="" class="crest" data-crest />
+        <div class="blood-status">
+          <span data-blooodstatus>Blood Status</span>
+        </div>
+        <div><span data-inquisitorial></span></div>
+        <button class="close"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <!------TEMPLATE------->
+    <template data-template>
+      <div class="student">
+        <div class="studentName">
+          <h2>
+            <span data-firstname></span><span data-middlename></span
+            ><span data-lastname></span>
+          </h2>
+          <p class="house" data-house></p>
+        </div>
+        <img src="" alt="" class="crest" data-crest />
+        <div class="expel">Expelliarmus</div>
+      </div>
+    </template>
+
+    <script src="hacked-hogwarts.js"></script>
+  </body>
+</html>
