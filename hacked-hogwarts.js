@@ -22,6 +22,7 @@ let newStudent = {
   middleName: " Germaine Jocelyne ",
   firstName: "Ioana",
   lastName: "Aneroussis",
+  image: "images/aneroussis_i.png",
   expelled: false,
   bloodstatus: "Pure-blood"
 };
@@ -134,6 +135,7 @@ function insertBloodStatus(student) {
 // --- Inject New Student ---
 function pushMyself() {
   arrayOfStudents.push(newStudent);
+  console.log(arrayOfStudents);
 }
 
 // --- Find JSON Family Datas ---
@@ -196,6 +198,8 @@ function expelliarmus(expelStudentId) {
 
   currentArray = arrayOfStudents;
   filterStudents(filterBy);
+
+  // TODO Find id for new Student to reject Expel function
 }
 
 // --- Filter Functions for each House ---
