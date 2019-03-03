@@ -111,7 +111,7 @@ async function getJson() {
 
 // --- Fetch JSON Blood Status Datas ---
 function fetchBloodFamilyJSON(student) {
-  fetch("http://petlatkea.dk/2019/hogwarts/families.json")
+  fetch("families.json")
     .then(res => res.json())
     .then(famJSON => {
       bloodFamilyJSON = famJSON;
