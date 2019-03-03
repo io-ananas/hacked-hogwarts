@@ -12,7 +12,11 @@
     "house": "Hufflepuff"
   },
   {
-    "fullname": "Ernest \"Ernie\" Macmillian",
+    "fullname": "Zacharias Smith",
+    "house": "Hufflepuff"
+  },
+  {
+    "fullname": "Ernest \"Ernie\" Macmillan",
     "house": "Hufflepuff"
   },
   {
@@ -25,10 +29,6 @@
   },
   {
     "fullname": "Leanne -unknown-",
-    "house": "Hufflepuff"
-  },
-  {
-    "fullname": "Zacharias Smith",
     "house": "Hufflepuff"
   },
   {
@@ -81,7 +81,7 @@
   },
   {
     "fullname": "Stephen Cornfoot",
-    "house": "Ravenclaw"
+    "house": "Hufflepuff"
   },
   {
     "fullname": "Anthony Goldstein",
@@ -108,6 +108,10 @@
     "house": "Slytherin"
   },
   {
+    "fullname": "Tracey Davis",
+    "house": "Slytherin"
+  },
+  {
     "fullname": "Gregory Goyle",
     "house": "Slytherin"
   },
@@ -129,10 +133,6 @@
   },
   {
     "fullname": "Blaise Zabini",
-    "house": "Slytherin"
-  },
-  {
-    "fullname": "Tracey Davis",
     "house": "Slytherin"
   }
 ]

@@ -5,7 +5,7 @@
 // --- Declare Arrays ---
 let arrayOfStudents = [];
 let arrayOfExpelled = [];
-let activeArray;
+let currentArray;
 
 // --- Declare Filter/Sort ---
 let filterBy = "All";
@@ -151,7 +151,7 @@ function createIdStudent() {
     const idMade = makeId(student.fullName);
     student.id = idMade;
   });
-  activeArray = arrayOfStudents;
+  currentArray = arrayOfStudents;
   filterStudents(filterBy);
 }
 
@@ -180,14 +180,14 @@ function expelliarmus(expelStudentId) {
     return el.expelled === false;
   });
 
-  activeArray = arrayOfStudents;
+  currentArray = arrayOfStudents;
   filterStudents(filterBy);
 }
 
 // --- Filter Functions for each House ---
 function filterAll() {
   filterBy = "All";
-  activeArray = arrayOfStudents;
+  currentArray = arrayOfStudents;
   filterStudents(filterBy);
 }
 
@@ -215,7 +215,7 @@ function filterStudents(filterBy) {
   if (filterBy === "All") {
     sortStudents(arrayOfStudents);
   } else {
-    activeArray = arrayOfStudents.filter(function(student) {
+    currentArray = arrayOfStudents.filter(function(student) {
       return student.house === filterBy;
     });
     // Call the Sorting Function
@@ -244,7 +244,7 @@ function sortStudents() {
     displayStudents();
   }
   if (sortBy === "firstName") {
-    activeArray.sort(function(a, z) {
+    currentArray.sort(function(a, z) {
       if (a.firstName < z.firstName) {
         return -1; // Shift to one position foreward
       } else {
@@ -254,7 +254,7 @@ function sortStudents() {
     displayStudents();
   }
   if (sortBy === "lastName") {
-    activeArray.sort(function(a, z) {
+    currentArray.sort(function(a, z) {
       if (a.lastName < z.lastName) {
         return -1;
       } else {
@@ -264,7 +264,7 @@ function sortStudents() {
     displayStudents();
   }
   if (sortBy === "house") {
-    activeArray.sort(function(a, z) {
+    currentArray.sort(function(a, z) {
       if (a.house < z.house) {
         return -1;
       } else {
@@ -276,7 +276,7 @@ function sortStudents() {
 }
 
 function expelliarmusButton() {
-  activeArray = arrayOfExpelled;
+  currentArray = arrayOfExpelled;
   displayStudents();
 }
 
@@ -287,7 +287,7 @@ function displayStudents() {
   const container = document.querySelector("[data-container]");
   container.innerHTML = "";
 
-  activeArray.forEach(student => {
+  currentArray.forEach(student => {
     console.log(student);
     let clone = template.content.cloneNode(true);
     // Get elements in the template
@@ -326,6 +326,8 @@ function displayModal(student) {
   let studentPortrait = modal.querySelector(".portrait");
   if (student.firstName == "Padma") {
     studentPortrait.src = "images/patil_padme.png";
+  } else if (student.firstName == "Ernest") {
+    studentPortrait.src = "images/macmillian_e.png";
   } else {
     studentPortrait.src = student.image;
   }
