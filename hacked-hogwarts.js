@@ -15,15 +15,23 @@ let sortBy = "None";
 let bloodFamilyJSON;
 
 // --- Declare new Student ---
+let newStudent = {
+  fullName: "Ioana Germaine Jocelyne Aneroussis",
+  house: "Hufflepuff",
+  crest: "myimg/hufflepuff.jpg",
+  middleName: " Germaine Jocelyne ",
+  firstName: "Ioana",
+  lastName: "Aneroussis",
+  expelled: false,
+  bloodstatus: "Pure-blood"
+};
 
 // --- Object Prototype ---
 const studentProto = {
-  fullName: "--Fullname-",
-
+  fullName: "--Fullname--",
   firstName: "--Firstname--",
   middleName: "--Middlename--",
   lastName: "--Lastname--",
-
   house: "--House--",
   crest: "--Crest--",
   image: "--Image-",
@@ -97,6 +105,7 @@ async function getJson() {
   let Json = await fetch("students.json");
   let students = await Json.json();
   studentObject(students);
+  pushMyself();
 }
 
 // --- Fetch JSON Blood Status Datas ---
@@ -120,6 +129,11 @@ function insertBloodStatus(student) {
   } else {
     student.bloodstatus = "Muggle";
   }
+}
+
+// --- Inject New Student ---
+function pushMyself() {
+  arrayOfStudents.push(newStudent);
 }
 
 // --- Find JSON Family Datas ---
